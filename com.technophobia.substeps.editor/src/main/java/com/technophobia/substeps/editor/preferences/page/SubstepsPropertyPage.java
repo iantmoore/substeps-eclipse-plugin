@@ -354,7 +354,7 @@ public class SubstepsPropertyPage extends PropertyPage implements IWorkbenchProp
         final Collection<SubstepsFolderChangedListener> listenersRequiringConfirmationAction = new ArrayList<SubstepsFolderChangedListener>();
         boolean cancelled = false;
 
-        if (!previousPath.equals(newPath)) {
+        if (previousPath != null && !previousPath.equals(newPath)) {
             for (final SubstepsFolderChangedListener folderChangeListener : substepsFolderChangeListeners) {
                 final ConfirmationStatus confirmationStatus = handleFolderChanged(previousPath, newPath,
                         folderChangeListener);
@@ -379,8 +379,15 @@ public class SubstepsPropertyPage extends PropertyPage implements IWorkbenchProp
 
     private IPath oldSubstepsFolderLocation() {
         final IProject project = getProject();
-        return project.getFolder(getPreferenceStore().getString(SubstepsPreferences.SUBSTEPS_FOLDER.key()))
-                .getFullPath().removeFirstSegments(1);
+        IPath rtn = null;
+        try {
+        	rtn = project.getFolder(getPreferenceStore().getString(SubstepsPreferences.SUBSTEPS_FOLDER.key()))
+                    .getFullPath().removeFirstSegments(1);
+        }
+        catch (Exception e){
+        	// not bothered
+        }
+        return rtn;
     }
 
 

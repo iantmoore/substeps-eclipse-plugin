@@ -22,16 +22,16 @@
     </licenses>
 
 	<properties>
-		<tycho.version>0.17.0</tycho.version>
+		<tycho.version>0.23.0</tycho.version>
                 <KEY_STORE>/path/to/keystore</KEY_STORE>
                 <ALIAS>alias</ALIAS>
 	</properties>
 
 	<repositories>
 		<repository>
-			<id>juno</id>
+			<id>mars</id>
 			<layout>p2</layout>
-			<url>http://download.eclipse.org/releases/juno</url>
+			<url>http://download.eclipse.org/releases/mars</url>
 		</repository>
 		<repository>
 			<id>swtbot</id>
@@ -144,7 +144,7 @@
 				<module>../com.technophobia.substeps.swtbot.tests</module>
 			</modules>
 		</profile>
-		<profile>
+<!-- 		<profile>
 			<id>internalDev</id>
 
 			<distributionManagement>
@@ -162,7 +162,7 @@
 			</distributionManagement>
 
 		</profile>
-		<profile>
+ -->		<profile>
 			<id>sign</id>
 			<build>
 				<plugins>
